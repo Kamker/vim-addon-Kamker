@@ -1,0 +1,12 @@
+#thsi
+"this"
+#( 
+"( <++> "
+#[ 
+"[ <++> "
+#{ 
+"{ <++> "
+#date,
+"\<c-r>=strftime('%Y/%m/%d')\<cr>"
+#time,
+"\<c-r>=strftime('%H:%M')\<cr>"
