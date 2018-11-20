@@ -13,7 +13,7 @@ map 0 ^
 map <tab> %
 noremap! jj <esc>
 nnoremap <silent><leader> :call <sid>ProcessMapleader(mapleader, "n")<cr>
-xnoremap <silent><leader> :call <sid>ProcessMapleader(mapleader, "x")<cr>
+xnoremap <silent><leader> :<c-u>call <sid>ProcessMapleader(mapleader, "x")<cr>
 noremap <silent><leader><leader> ,
 nnoremap <leader>h :h<space>
 nnoremap <Leader>cd :lcd %:p:h<CR>:pwd<CR>
@@ -178,16 +178,12 @@ function! s:ProcessMapleader(prefix, mode)
 			let [oldCmd, char] = [mapCmd, nr2char(char)]
 			if char == "\<Esc>" | break | endif
 			let mapCmd .= char
-			let cmdkeys = maparg(mapCmd, a:mode)
-			if cmdkeys != ""
+			if !empty(maparg(mapCmd, a:mode))
 				echon clearline
-				let oldCmd = maparg(cmdkeys, a:mode)
-				if oldCmd != ""
-					let [mapCmd, cmdkeys] = [cmdkeys, oldCmd]
-				endif
-				let cmdkeys = eval('"'.escape(cmdkeys, '\<"').'"')
-				let cmdkeys = (a:mode == "v" ? "\<esc>gv" : "").cmdkeys
-				call feedkeys(cmdkeys, "t".KeyRemapFlag(mapCmd, a:mode))
+				exec "normal! \<c-\>\<c-n>"
+				let mapCmd = (a:mode == "x" ? "gv" : "").mapCmd
+				exec "nmap <expr> <plug>ExecMap <sid>ExecMap(".string(mapCmd).")"
+				call feedkeys("\<plug>ExecMap")
 				break
 			elseif !IsMapSeq(mapCmd, a:mode)
 				let mapCmd = oldCmd
@@ -197,6 +193,11 @@ function! s:ProcessMapleader(prefix, mode)
 
 	" Recovery mapping
 	exec a:mode."noremap ".a:prefix." ".trigger
+endfunction
+
+function! s:ExecMap(str)
+	nunmap <plug>ExecMap
+	return a:str
 endfunction
 
 

@@ -74,7 +74,7 @@ function! MapOut(keys, mode)
 	let output = split(@a, "\n")
 	let @a = save_a
 	let keys = eval('"'.escape(a:keys, '\<"').'"')
-	return filter(output, 's:pick(v:val, "'.keys.'")')
+	return filter(output, 's:pick(v:val, keys)')
 endfunction
 
 function! s:pick(val, keys)
