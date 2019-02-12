@@ -204,6 +204,7 @@ let g:scratch_persistence_file = DataDir.'_scratch'
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => yankring {{{1
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:yankring_history_dir = DataDir
 nnoremap <silent> <leader>ys :YRShow<cr>
 let g:yankring_replace_n_pkey = '<Char-172>'
 let g:yankring_replace_n_nkey = '<Char-174>'
@@ -270,6 +271,13 @@ let g:EasyMotion_smartcase = 1
 " JK motions: Line motions
 map <leader>j <Plug>(easymotion-j)
 map <leader>k <Plug>(easymotion-k)
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => previm {{{1
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:previm_enable_realtime = 1
+let g:previm_open_cmd = 'cmd /cstart chrome'
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""

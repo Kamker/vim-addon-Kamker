@@ -11,7 +11,7 @@ endfunction
 " Remap VIM 0 to first non-blank character(0 ~> g0).
 map 0 ^
 map <tab> %
-noremap! jj <esc>
+" noremap! jj <esc>
 nnoremap <silent><leader> :call <sid>ProcessMapleader(mapleader, "n")<cr>
 xnoremap <silent><leader> :<c-u>call <sid>ProcessMapleader(mapleader, "x")<cr>
 noremap <silent><leader><leader> ,

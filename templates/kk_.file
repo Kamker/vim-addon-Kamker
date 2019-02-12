@@ -6,7 +6,11 @@
 "[ <++> "
 #{ 
 "{ <++> "
-#date,
+#date;
 "\<c-r>=strftime('%Y/%m/%d')\<cr>"
-#time,
+#time;
 "\<c-r>=strftime('%H:%M')\<cr>"
+#`;
+"\<esc>:exe matchstr('-'.input('Offset:'), '^-\\d\\+$').',.MReplace ?'\<cr>"
+#;;
+"\<c-r>=col('.')==1?'\<c-o>mz':line(\"'z\")==0?'':line(\"'z\")>line('.')?'\<c-o>':execute(\"'z,.MReplace ?\")[1:0]\<cr>"
