@@ -149,6 +149,7 @@ nnoremap <leader>ip :<c-u>setlocal paste!<cr>
 " Open file in chrome browser
 nnoremap <silent> <leader>cv :silent!!cd /d %:p:h & cmd /cstart chrome "%:p:t"<cr>
 vnoremap <silent> <leader>cv :<c-u>let _#0=@"<cr>gvy:silent!!cmd /cstart chrome <c-r>=escape(@", '%#<')<cr><cr>:let @"=_#0<cr>
+nnoremap <leader>gg :Tabularize /[^"]*\zs"/c1<cr>
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""

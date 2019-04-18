@@ -17,6 +17,7 @@ endif
 xnoremap <silent> gv :call VisualSelection('gv', '')<cr>
 " Open Ack and put the cursor in the right position
 nnoremap <leader>gv :Ack<space>
+nnoremap <leader>ag :exe 'Ack "'.iconv(" ","gbk","utf8").'"'<c-left><bs>
 " When you search with Ack, display your results in cope
 nnoremap <leader>oo :botright copen<cr>
 
